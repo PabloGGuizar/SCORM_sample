@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../JavaScript/SCORM_API_wrapper.js"></script>
+
+    <script>
+        var scorm = pipwerks.SCORM;
+
+        function on() {
+            scorm.version = '2004';
+            var respuesta = scorm.init();
+            alert('¿Curso iniciado correctamente? ' + respuesta);
+        }
+
+        function off() {
+            var respuesta = scorm.quit();
+            alert('¿Curso terminó correctamente? ' + respuesta);
+        }
+
+        function completar() {
+            var respuesta = scorm.set("cmi.completion_status", "completed");
+            alert('¿Curso completado? ' + respuesta);
+        }
+
+        window.onload = () => {
+            on();
+        }
+
+        window.onunload = () => {
+            off();
+        }
+
+    </script>
+</head>
+<body>
+
+    <h1>Hello, World!</h1>
+    <button onclick="completar()">Completar curso</button>
+</body>
+</html>
